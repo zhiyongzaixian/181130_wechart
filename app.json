@@ -1,5 +1,14 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/list/list"
-  ]
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#8ed145",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "welcome to atguigu",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
 }

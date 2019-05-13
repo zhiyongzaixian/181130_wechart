@@ -5,20 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    msg: '测试'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('onLoad');
+    console.log(this.data.msg);
+    //修改数据
+    // React里边如何修改状态数据
+    // this.state = {}
+    // this.setState({})
+    // 小程序
+    
 
+    setTimeout(() => {
+      this.setData({
+        msg: '修改以后的数据'
+      })
+    }, 1000)
   },
+  toList(){
+    // 跳转页面到list
+    wx.redirectTo({
+      url: '/pages/list/list',
+      success: () => {
+        console.log('跳转成功');
+      }
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    console.log('onReady');
 
   },
 
@@ -26,6 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('onShow');
 
   },
 
