@@ -37,4 +37,14 @@
       1. wx.navigateTo(Object object)
       2. 路由跳转的依据是：页面的路径
     2. 后台路由：url地址
+  5. template
+    1. 定义模板: name=模板名
+    2. 引入模板  import
+    3. 使用模板: is=模板名
+    3. 向模板内部导入数据
+      1. data = 模板数据
+  6. 遍历数据
+    1. 语法: wx:for=遍历数据
+    2. 注意点: wx:key = 唯一值
+    3. 默认的个体：item，默认下标： index
 
