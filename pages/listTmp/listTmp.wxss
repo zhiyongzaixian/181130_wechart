@@ -1,0 +1,54 @@
+/* pages/listTmp/listTmp.wxss */
+.tmpContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar_date {
+  padding: 10rpx;
+}
+
+.avatar_date image {
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.avatar_date text {
+  font-size: 32rpx;
+  vertical-align: middle;
+}
+
+.company {
+  padding-left: 10rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.tmpImg {
+  width: 100%;
+  height: 340rpx;
+}
+
+.content {
+  font-size: 32rpx;
+  line-height: 50rpx;
+  text-indent: 32rpx;
+  /* word-spacing: 100rpx; 针对单词，对中文不生效*/
+  /* letter-spacing: 100rpx; 针对字母，对中文生效*/
+}
+
+.star_view_container image {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.star_view_container text {
+  font-size: 24rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+
+}

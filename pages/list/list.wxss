@@ -1,1 +1,11 @@
 /* pages/list/list.wxss */
+@import '/pages/listTmp/listTmp.wxss';
+.listContainer  swiper{
+  width: 100%;
+  height: 400rpx;
+}
+
+.listContainer  swiper image{
+  width: 100%;
+  height: 400rpx;
+}

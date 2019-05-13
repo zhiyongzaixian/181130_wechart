@@ -1,0 +1,18 @@
+<template name='listTmp'> 
+  <view class='tmpContainer'>
+    <view  class='avatar_date'>
+      <image src='/images/avatar/0.png'></image>
+      <text>2019 5.13</text>
+    </view>
+    <text class='company'>尚硅谷</text>
+    <image class='tmpImg' src='/images/index/cart.jpg'></image>
+    <text class='content'>hello world让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，让每一个IT人，，，
+    </text>
+    <view class='star_view_container'>
+      <image src='/images/icon/none-star.png'></image>
+      <text>88</text>
+      <image src='/images/icon/view.png'></image>
+      <text>66</text>
+    </view>
+  </view>
+</template>
