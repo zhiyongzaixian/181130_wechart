@@ -1,4 +1,4 @@
-// pages/list/list.js
+// pages/detail/detail.js
 let listDatas = require('../../datas/list-data.js');
 console.log(listDatas, typeof listDatas);
 Page({
@@ -7,24 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listArr: []
+    detailObj: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 更新状态数据
+    console.log(options);// 请求的参数对象
+    let index = options.index;
     this.setData({
-      listArr: listDatas.list_data
-    })
-  },
-  toDetail(event){
-    console.log(event);
-    let index = event.currentTarget.dataset.index;
-    // 跳转到detail
-    wx.navigateTo({ // 如何通过路由传参 query
-      url:'/pages/detail/detail?index=' + index
+      detailObj: listDatas.list_data[index]
     })
   },
 

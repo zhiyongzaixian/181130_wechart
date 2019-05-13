@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/list/list",
+    "pages/detail/detail",
     "pages/index/index"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#489B81",
