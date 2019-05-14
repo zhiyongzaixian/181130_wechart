@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg: '测试'
+    msg: '测试',
+    userInfo: {}
   },
 
   /**
@@ -25,11 +26,34 @@ Page({
       this.setData({
         msg: '修改以后的数据'
       })
+      
     }, 1000)
+    
+
+    // 获取用户登录信息
+    wx.getUserInfo({
+      success: (res) => {
+        console.log(res, '获取成功');
+        this.setData({
+          userInfo: res.userInfo
+        })
+      },
+      fail: () => {
+        console.log('获取失败');
+      }
+    })
+  },
+  handleGetUserInfo(res){
+    console.log(res);
+    if (res.detail.rawData){
+      this.setData({
+        userInfo: JSON.parse(res.detail.rawData)
+      })
+    }
   },
   toList(){
     // 跳转页面到list
-    wx.redirectTo({
+    wx.switchTab({
       url: '/pages/list/list',
       success: () => {
         console.log('跳转成功');

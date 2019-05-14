@@ -1,6 +1,7 @@
 <view class='indexContainer'>
-  <image class='indexImg' src='/images/index/cart.jpg'></image>
-  <text class='userName'>hello {{msg}}</text>
+  <image wx:if='{{userInfo.avatarUrl}}' class='indexImg' src='{{userInfo.avatarUrl}}'></image>
+  <button class='btn' wx:if='{{!userInfo.avatarUrl}}' bindgetuserinfo='handleGetUserInfo' open-type='getUserInfo'>点击获取用户信息</button>
+  <text class='userName'>hello {{userInfo.nickName}}</text>
   <!-- <input value='{{msg}}'></input> -->
   <view catchtap='toList' class='goStudy'>
     <text >开启小程序之旅</text>
