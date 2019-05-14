@@ -1,4 +1,8 @@
 App({ // 注册整个小程序应用
+  data: {
+    isPlay: false, // 标识播放
+    pageIndex: null // 标识页面
+  },
 
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）

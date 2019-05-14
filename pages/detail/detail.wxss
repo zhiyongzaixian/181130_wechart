@@ -9,14 +9,13 @@
   width:100%;
   height:460rpx;
 }
-
 .musicImg {
-  width:60rpx;
-  height:60rpx;
   position: absolute;
-  left:50%;
-  top:200rpx;
+  left: 50%;
+  top: 200rpx;
   margin-left: -30rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .detail_author_date {

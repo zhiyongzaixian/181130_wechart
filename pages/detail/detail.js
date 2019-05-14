@@ -1,6 +1,10 @@
 // pages/detail/detail.js
 let listDatas = require('../../datas/list-data.js');
 console.log(listDatas, typeof listDatas);
+
+
+let appDatas = getApp();
+console.log(appDatas, typeof appDatas);
 Page({
 
   /**
@@ -8,13 +12,26 @@ Page({
    */
   data: {
     detailObj: {},
-    isCollected: false // 标识是否收藏
+    isCollected: false, // 标识是否收藏
+    isMusicPlay: false // 标识音乐是否播放
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
+
+  onShareAppMessage(res) {
+    console.log(res, 'xxxx');
+    return {
+      title: '我的转发内容',
+      path: '/pages/detail/detail',
+      IMAGEURL: '/images/index/cart.jpg'
+    }
+  },
   onLoad: function (options) {
+
+   
+
     console.log(options);// 请求的参数对象
     let index = options.index;
     this.setData({
@@ -31,9 +48,42 @@ Page({
       })
     }
 
+    // 判断当前页面是否在播放 ---> app的data中的状态
+    if(appDatas.data.isPlay && appDatas.data.pageIndex === index){
+      this.setData({
+        isMusicPlay: true
+      })
+    }
+
+    // 监听音乐播放和暂停
+    wx.onBackgroundAudioPlay( () =>{
+      console.log('音乐播放');
+      this.setData({
+        isMusicPlay: true
+      })
+
+
+      // 将播放的状态缓存到app的data中
+      appDatas.data.isPlay = true;
+      appDatas.data.pageIndex = index;
+
+    })
+
+    wx.onBackgroundAudioPause( ()  => {
+      console.log('音乐暂停');
+      this.setData({
+        isMusicPlay: false
+      })
+
+      // 将播放的状态缓存到app的data中
+      appDatas.data.isPlay = false;
+    })
+    
+
   },
   // 处理收藏的方法
   handleCollection(){
+
     // 更新isCollected的状态值
     let isCollected = !this.data.isCollected;
     this.setData({
@@ -60,7 +110,35 @@ Page({
       data: obj
     })
   },
+  // 处理分享大的方法
+  handleShare(){
+    wx.showActionSheet({
+      itemList: [
+        '分享到朋友圈', '分享到微博','分享给微信好友'
+      ],
+    })
+  },
+  // 处理音乐播放
+  handleMusicPlay(){
+    let isMusicPlay = !this.data.isMusicPlay;
+    this.setData({
+      isMusicPlay
+    })
 
+    let { dataUrl, title, coverImgUrl} = this.data.detailObj.music;
+    if(isMusicPlay){
+      
+      wx.playBackgroundAudio({
+        dataUrl,
+        title,
+        coverImgUrl
+      })
+    }else {
+      wx.pauseBackgroundAudio()
+    }
+
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

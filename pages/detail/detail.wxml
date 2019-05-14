@@ -1,6 +1,7 @@
 <!--pages/detail/detail.wxml-->
 <view class="detailContainer">
-  <image class="detail_header" src="{{detailObj.detail_img}}"></image>
+  <image class="detail_header" src="{{isMusicPlay?detailObj.music.coverImgUrl:detailObj.detail_img}}"></image>
+  <image class='musicImg' catchtap='handleMusicPlay' src='{{isMusicPlay?"/images/music/music-start.png":"/images/music/music-stop.png"}}'></image>
   <view class="detail_author_date">
     <image src="{{detailObj.avatar}}"></image>
     <text>{{detailObj.author}}</text>
@@ -19,6 +20,6 @@
 
 
   
-  <button open-type="share">转发此文章</button>
+  <button open-type='share'>转发此文章</button>
   <text class="detail_content">{{detailObj.detail_content}}</text>
 </view>
