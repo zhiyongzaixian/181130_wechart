@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detailObj: {}
+    detailObj: {},
+    isCollected: false // 标识是否收藏
   },
 
   /**
@@ -17,7 +18,46 @@ Page({
     console.log(options);// 请求的参数对象
     let index = options.index;
     this.setData({
-      detailObj: listDatas.list_data[index]
+      detailObj: listDatas.list_data[index],
+      index: index
+    })
+
+    // 更新当前页面的是否收藏的状态
+    let storageObj = wx.getStorageSync('isCollected');
+    // 判断当前页面是否收藏
+    if(storageObj[index]){
+      this.setData({
+        isCollected: true
+      })
+    }
+
+  },
+  // 处理收藏的方法
+  handleCollection(){
+    // 更新isCollected的状态值
+    let isCollected = !this.data.isCollected;
+    this.setData({
+      isCollected 
+    })
+
+    // 提示功能
+    let title = isCollected?'收藏成功':'取消收藏';
+    wx.showToast({
+      title
+    })
+
+    // 缓存是否收藏的状态到本地
+    // 思路： {0: true, 1: false, 2: true}
+    let index = this.data.index;
+    //let obj = {};导致永远只有一个页面的状态
+    let obj = wx.getStorageSync('isCollected');
+    console.log('----', obj, '----------');
+    // 预处理 ‘’ || {0: true}
+    obj = obj?obj:{};
+    obj[index] = isCollected;
+    wx.setStorage({
+      key: 'isCollected',
+      data: obj
     })
   },
 
